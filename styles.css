@@ -1,0 +1,103 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: fantasy;
+}
+
+h1{
+    margin: 120px;
+    font-size: 50px;
+}
+h2{
+    font-size: 45px;
+    text-align: center;
+}
+.containerHeroes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+}
+img{
+    margin: 15px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    box-shadow: 10px 5px 5px rgb(0, 0, 0);    
+}
+.container-btn{
+    display: flex;
+    justify-content: center;
+}
+.btnValider{
+   height: 100px;
+   width: 250px;
+   font-size: 30px;
+   margin-top: 30px;
+}
+
+.sous-container{
+    margin-top: 150px;
+    height: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+p{
+    font-size: 35px;
+}
+.choice{
+     height: 500px;
+     width: 500px;     
+         
+}
+.perso-user{
+            margin-top: 100px;
+            height: 500px;
+            width: 500px;
+     }
+
+
+     .competence{
+         display: flex;
+         justify-content: center;
+     }
+     .text-comp{
+         margin: 20px;
+     }
+.btn-container{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 300px;
+    margin: 240px;
+    
+}
+hr{
+    margin-top: 120px;
+}
+button{
+    padding: 30px;
+    margin: 12px;
+    height: 120px;
+    width: auto;
+    font-size: 35px;
+}
+
+.history-container{
+    height: 500px;
+    width: 300px; 
+
+}
+.chambre{
+            margin-top: 50px;
+            height: 500px;
+            width: 500px;
+}
+.text-history{
+    width: 600px;
+}
