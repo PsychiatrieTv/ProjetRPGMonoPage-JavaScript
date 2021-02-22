@@ -67,7 +67,7 @@ p{
          justify-content: center;
      }
      .text-comp{
-         margin: 20px;
+         margin: 40px;
      }
 .btn-container{
     display: flex;
@@ -91,6 +91,7 @@ button{
 .history-container{
     height: 500px;
     width: 300px; 
+    margin-right: 300px;
 
 }
 .chambre{

@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">   
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <h1>Heroes And Monsters</h1>
     <h2>Choisir ton personnage</h2>
-    <div class="containerHeroes">        
-        <img src="img/hunter.jpg">
-        <img src="img/mage.jpg">
-        <img src="img/paladin.jpg">
+    <div id="heros" class="containerHeroes">        
+     
     </div>
     <div class="container-btn">
       <button onclick="letgo()" class="btnValider">Valider</button>  
@@ -27,8 +25,8 @@
             <h2>Personnage Name</h2>
             <img class="perso-user" src="img/hunter.jpg">
             <div class="competence">
-                <p class="text-comp">Attaque :</p>
-                <p class="text-comp">defense :</p>
+                <p class="text-comp">Attaque : 0</p>
+                <p class="text-comp">defense : 0</p>
             </div>
         </div>
         <div class="btn-container">
