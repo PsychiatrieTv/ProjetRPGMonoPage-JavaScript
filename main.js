@@ -14,6 +14,7 @@ let Heroes = [
     img: "img/hunter.jpg",
     att: 7,
     def: 3,
+    arme: "arc",
   },
   {
     id: 1,
@@ -21,6 +22,7 @@ let Heroes = [
     img: "img/mage.jpg",
     att: 3,
     def: 7,
+    arme: "batton",
   },
   {
     id: 2,
@@ -34,7 +36,7 @@ let Heroes = [
 /**------------------------------------ */
 
 /**----------------------------------- */
-/**User s'inscrit */
+/**User s'inscrit !!!!!! A Décommenter*/
 
 // function register() {
 //   let prenom;
@@ -68,7 +70,7 @@ for (let index = 0; index < Heroes.length; index++) {
 
 const myPerso = document.querySelectorAll(".imageHeroes");
 const userPerso = document.querySelector(".choice");
-
+const map = new Map();
 /**Foreach permet appliquer une function à tous les éléments */
 myPerso.forEach((element) => {
   const idChiffre = parseInt(element.id);
@@ -90,6 +92,10 @@ function loadHeroes(id, object) {
   titreUser.innerText = `${User.nom}`;
   comptAtt.innerText = `Attaque : ${object[id].att}`;
   comptDef.innerText = `Défense : ${object[id].def}`;
+  map.set("att", object[id].att);
+  map.set("def", object[id].def);
+  map.set("arme", object[id].arme);
+  console.log(map.get("att"));
 }
 /**------------------------------ */
 
@@ -179,3 +185,46 @@ function precedent() {
 }
 
 /**La Daronne */
+
+/**function permettant de lancer le dialogue avec la daronne */
+let count = 0;
+const btnDarone = document.querySelector(".btn-daronne");
+const imageDialogue = document.querySelector(".chambre");
+btnDarone.addEventListener("click", () => {
+  suivant();
+});
+
+function suivant() {
+  imageDialogue.src = "img/ladraonne.jpeg";
+  textHistory.innerHTML = `Cela fait maintenant 2h que je t'appelle ${User.nom}`;
+  document.getElementById("daronne").disabled = true;
+
+  count--;
+  console.log(count);
+
+  if (count == 1) {
+    textHistory.innerHTML = `Je sais que tu n'as que 10ans`;
+  } else if (count == 2) {
+    textHistory.innerHTML = `Mais ça me ferai exprèment plaisir d'aller`;
+  } else if (count == 3) {
+    textHistory.innerHTML = `Que tu suives les traces de ton daron`;
+  } else if (count == 4) {
+    textHistory.innerHTML = `plombier a casquette verte certe mais il était courageux lui`;
+  } else if (count == 5) {
+    textHistory.innerHTML = `il a parcourut du chemin pour venir me chercher dans un chateau  `;
+  } else if (count == 6) {
+    textHistory.innerHTML = `Va voir chez le forgeron si peux pas récupérer l'arme de ton père `;
+  } else if (count == 7) {
+    textHistory.innerHTML = `pour aller remplacer ton ${map.get(
+      "arme"
+    )} dégeulasse`;
+  } else if (count == 8) {
+    textHistory.innerHTML = `aller à tanto bichon je t'aime, ne meurs pas c'est tous ce qu'une darone demande`;
+  } else if (count == 9) {
+    textHistory.innerHTML = `${User.nom} tu es dans ta chambre j'ai quelque choses pour toi !!!!`;
+  } else if (count == 10) {
+    next.disabled = true;
+    document.getElementById("daronne").disabled = false;
+    textHistory.innerHTML = `Ah la daronne m'appelle`;
+  }
+}

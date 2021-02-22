@@ -22,8 +22,8 @@ h2{
 }
 .imageHeroes{
     margin: 15px;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     border: 1px solid black;
     box-shadow: 10px 5px 5px rgb(0, 0, 0);    
 }
@@ -43,7 +43,7 @@ h2{
     height: 1200px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 
@@ -57,8 +57,8 @@ p{
 }
 .perso-user{
             margin-top: 100px;
-            height: 500px;
-            width: 500px;
+            height: 1000px;
+            width: 1000px;
      }
 
 
@@ -93,15 +93,14 @@ button{
 }
 
 .history-container{
-    height: 500px;
-    width: 300px; 
-    margin-right: 300px;
+   
+    
 
 }
 .chambre{
             margin-top: 50px;
-            height: 500px;
-            width: 500px;
+            height: 1000px;
+            width: 1000px;
 }
 .text-history{
     width: 600px;
