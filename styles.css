@@ -62,13 +62,17 @@ p{
      }
 
 
-     .competence{
-         display: flex;
-         justify-content: center;
-     }
-     .text-comp{
-         margin: 40px;
-     }
+.competence{
+         display: flex;       
+         flex-direction: column;
+         justify-content: space-between;
+         
+         
+     }     
+.text-comp{
+         margin: 50px;             
+     }     
+
 .btn-container{
     display: flex;
     flex-direction: column;
