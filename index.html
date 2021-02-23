@@ -9,16 +9,48 @@
     <title>Document</title>
 </head>
 <body>
+
+   
+   
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>S'Enregistrer</h2>     
+        </div>
+        <div class="modal-body">       
+         
+            <form  action="#" method="POST">
+                <div>
+                  <label class="label-register" for="nom">Nom</label><br>
+                  <input class="input-register" placeholder="Gramaxdu69" type="text" id="nom">
+                  <button class="btn-register" type="button" onclick="register()">Go !!!!</button>
+                </div>
+            </form>
+        </div>    
+      </div>    
+    </div>
+  <!-- finish modal -->
+  
+  <!-- Block HEARDER -->
     <h1>Un Village Dégeulasse</h1>
     <h2>Choisir ton personnage</h2>
     <div id="heros" class="containerHeroes">        
       
     </div>
     <div class="container-btn">
-      <button onclick="letgo()" class="btnValider">Valider</button>  
+      <button  class="btnValider">Valider</button>  
     </div>
-    
+ <!-- FINISH BLOCK HEADER -->
     <hr>
+    
+    <div class="progress-bar" id="myProgress">
+        <h2 class="h2-loading">Chargement .....</h2>        
+        <div id="myBar"></div>
+      </div>
 
     <div class="sous-container">
         <h2 class="titre-user"></h2>  
@@ -27,18 +59,26 @@
            
         </div>
         <div class=".competence">
-            <p id ="att" class=".text-comp"></p>
+            <p id ="att" class=".text-comp"></p>         
             <p id="def" class=".text-comp"></p>
+            <p id="gold" class=".text-comp"></p>
         </div>
         
         <div class="btn-container">
             <button id="next" class="btn-next">Suivant</button>
+            <button id="nextDaronne" class="btn-nextDaronne">Suivant</button>
+            <button id="nextForgeron" class="btn-nextForgeron">Suivant</button>
             <button id="daronne" class="btn-daronne">voir la Darone</button>
+            <button id="forgeron" class="btn-forgeron">voir le forgeron</button>
+            <button  class="btn-foret">Aller dans la foret</button>
             <button class="btn-prvt">Précédent</button>
+            <button class="btn-prvtDaronne">Précédent</button>
+            <button class="btn-prvtForgeron">Précédent</button>
         </div>
+
         <div class="history-container">
             <p class="text-history"></p>
-            <section class="container-Monster">
+            <section id="history" class="container-Monster">
                 <img class="chambre" src="img/chambregif.gif">
             </section>
         </div>
