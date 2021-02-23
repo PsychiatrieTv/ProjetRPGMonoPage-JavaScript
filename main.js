@@ -37,6 +37,16 @@ let Heroes = [
   },
 ];
 
+let Mob = [
+  {
+    id: 0,
+    nom: "Troll",
+    img: "img/troll.jpg",
+    att: 100,
+    def: 75,
+  },
+];
+
 /**Création d'un modal */
 // Get the modal
 const valider = document.querySelector(".sous-container");
@@ -150,6 +160,7 @@ for (let index = 0; index < Heroes.length; index++) {
 const myPerso = document.querySelectorAll(".imageHeroes");
 const userPerso = document.querySelector(".choice");
 const map = new Map();
+const mapMonster = new Map();
 /**Foreach permet appliquer une function à tous les éléments */
 myPerso.forEach((element) => {
   const idChiffre = parseInt(element.id);
@@ -178,7 +189,10 @@ function loadHeroes(id, object) {
   map.set("def", object[id].def);
   map.set("arme", object[id].arme);
   map.set("gold", object[id].gold);
+  mapMonster.set("att", Mob[0].att);
+  mapMonster.set("def", Mob[0].def);
   console.log(map.get("att"));
+  console.log(mapMonster.get("def"));
 }
 /**------------------------------ */
 
@@ -373,7 +387,7 @@ forgeron.addEventListener("click", gotoForgeron);
 
 function gotoForgeron() {
   forgeron.style.display = "none";
-  btnForet.style.display = "block";
+  btnForet.style.display = "none";
   btnForet.disable = true;
   forgeron.disabled = true;
   next.style.display = "none";
@@ -418,21 +432,31 @@ function nextdialogueForgeron() {
     function addAtt() {
       map.set("att", map.get("att") + 5);
       comptAtt.innerText = `Attaque : ${map.get("att")}`;
+      map.set("gold", map.get("gold") - 20);
+      comptgold.innerText = `Gold : ${map.get("gold")}`;
       alert(`Attaque : ${map.get("att")} ont été rajouté`);
-      textHistory.innerHTML = `Bon tu attends quoi Domminique ? va chercher l'arme de ton père`;
+      textHistory.innerHTML = `Par contre ça te coutera 20 gold ..... Bon tu attends quoi Domminique ? va chercher l'arme de ton père`;
       forgeron.disabled = true;
       btnNrxtForgeron.style.display = "none";
       imageDialogue.style.display = "block";
+      btnChoixAtt.style.display = "none";
+      btnChoixDef.style.display = "none";
+      btnForet.style.display = "block";
     }
     btnChoixDef.addEventListener("click", addDef);
     function addDef() {
       map.set("def", map.get("def") + 5);
-      comptDef.innerText = `Defense : ${map.get("att")}`;
+      comptDef.innerText = `Defense : ${map.get("def")}`;
       alert(`Attaque : ${map.get("def")} ont été rajouté`);
-      textHistory.innerHTML = `Bon tu attends quoi Domminique ? va chercher l'arme de ton père`;
+      textHistory.innerHTML = `Par contre ça te coutera 20 gold ..... Bon tu attends quoi Domminique ? va chercher l'arme de ton père`;
+      map.set("gold", map.get("gold") - 20);
+      comptgold.innerText = `Gold : ${map.get("gold")}`;
       forgeron.disabled = true;
       btnNrxtForgeron.style.display = "none";
       imageDialogue.style.display = "block";
+      btnChoixAtt.style.display = "none";
+      btnChoixDef.style.display = "none";
+      btnForet.style.display = "block";
     }
   }
 }
@@ -441,6 +465,99 @@ function nextdialogueForgeron() {
 /**Foret **/
 
 btnForet.addEventListener("click", gotoforest);
+let compt = 0;
+
+let comptAttMonstre = document.getElementById("attMonstre");
+let comptDefMonstre = document.getElementById("defMonstre");
+
 function gotoforest() {
-  imageDialogue.src = "";
+  compt++;
+  imageDialogue.src = "img/foret1.jpg";
+  textHistory.innerHTML = `Vous vous promenez dans la foret`;
+  btnForet.innerHTML = "Marcher";
+  if (compt == 1) {
+    textHistory.innerHTML = `Il n'y a rien au alentour`;
+    imageDialogue.src = "img/foret2.jpg";
+  } else if (compt == 2) {
+    textHistory.innerHTML = `Toujours que dalle`;
+    imageDialogue.src = "img/foret3.jpg";
+  } else if (compt == 3) {
+    textHistory.innerHTML = `Pue la merde cet endroit de mort`;
+    imageDialogue.src = "img/foret1.jpg";
+  } else if (compt == 4) {
+    textHistory.innerHTML = `Oh lalala les problèmes , Un troll !!! Bonne chance Salut !!!`;
+    imageDialogue.src = "img/troll.jpg";
+    btnForet.disabled = true;
+    const btnAttaquer = document.createElement("button");
+    const btnDefense = document.createElement("button");
+    document.getElementById("btncontainer").appendChild(btnAttaquer);
+    document.getElementById("btncontainer").appendChild(btnDefense);
+    btnAttaquer.innerHTML = "Attaquer";
+    btnDefense.innerHTML = "Defense";
+    comptAttMonstre.innerHTML = `Attaque : ${mapMonster.get("att")}`;
+    comptDefMonstre.innerHTML = `Defense : ${mapMonster.get("def")}`;
+    /**attaque du perso */
+    let atta = 0;
+    btnAttaquer.addEventListener("click", attaque);
+    function attaque() {
+      atta++;
+      if (atta == 1) {
+        textHistory.innerHTML = `Vous lui infligez ${map.get(
+          "att"
+        )}, le troll rigole`;
+        mapMonster.set("def", mapMonster.get("def") - map.get("att"));
+        comptDefMonstre.innerHTML = `Defense : ${mapMonster.get("def")} `;
+      } else if (atta == 2) {
+        textHistory.innerHTML = `Vous lui infligez ${map.get(
+          "att"
+        )}, le troll s'en dort tendrement`;
+
+        mapMonster.set("def", mapMonster.get("def") - map.get("att"));
+        comptDefMonstre.innerHTML = `Defense : ${mapMonster.get("def")} `;
+      } else if (atta == 3) {
+        textHistory.innerHTML = `Vous lui infligez ${map.get(
+          "att"
+        )}, le troll glitch dans un tronc peut-être en profiter ?`;
+        mapMonster.set("def", mapMonster.get("def") - map.get("att"));
+        comptDefMonstre.innerHTML = `Defense : ${mapMonster.get("def")} `;
+      } else if (atta == 4) {
+        alert(
+          "le troll a contré votre attaque, est vous ingligez 100 de dégats"
+        );
+        valider.style.display = "none";
+        const youlose = document.querySelector(".lose");
+        youlose.innerHTML = `${User.nom}, Tu t'es soulevé désolé :(`;
+      }
+    }
+    btnDefense.addEventListener("click", defense);
+    let deffa = 0;
+    function defense() {
+      deffa++;
+      if (deffa == 1) {
+        textHistory.innerHTML = `Vous lui gagné 4 de dédense ${map.set(
+          "def",
+          map.get("def") + 4
+        )}, le troll se met le doigt dans le nez`;
+        comptDef.innerText = `Defense : ${map.get("def")}`;
+      } else if (deffa == 2) {
+        textHistory.innerHTML = `Vous lui gagné 4 de dédense ${map.set(
+          "def",
+          map.get("def") + 4
+        )}, le troll mange un champignon`;
+        comptDef.innerText = `Defense : ${map.get("def")}`;
+      } else if (deffa == 3) {
+        textHistory.innerHTML = `Vous lui gagné 4 de dédense ${map.set(
+          "def",
+          map.get("def") + 4
+        )}, le troll vous insulte de méchant`;
+        comptDef.innerText = `Defense : ${map.get("def")}`;
+        comptAttMonstre.innerHTML = `Attaque : ${Mob[0].att - map.get("att")} `;
+      } else if (deffa == 4) {
+        alert("le troll prend sa masse et vous éclate");
+        valider.style.display = "none";
+        const youlose = document.querySelector(".lose");
+        youlose.innerHTML = `${User.nom}, Tu t'es soulevé désolé :(`;
+      }
+    }
+  }
 }
